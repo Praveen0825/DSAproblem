@@ -13,7 +13,7 @@ int main()
     vector<int> page(n),price(n);
     int a,b;
 
-    for(int&i : price)
+    for(int &i : price)
     cin>>i;
 
     for(int&i : page)

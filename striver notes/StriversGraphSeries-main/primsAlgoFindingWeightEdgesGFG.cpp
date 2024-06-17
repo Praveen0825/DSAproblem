@@ -34,7 +34,7 @@ class Solution
                 int weight = it[1];
                 if (mstSet[v] == false && weight < key[v]) {
                     parent[v] = u;
-    		key[v] = weight; 
+    		  key[v] = weight; 
                     pq.push({key[v], v});    
                 }
             }
