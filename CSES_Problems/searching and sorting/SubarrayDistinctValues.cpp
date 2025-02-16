@@ -1,50 +1,32 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-#define ll long long
 
-// output of this function -->numbers of subarrays which have number of different integers less than equal to k
-ll fun(ll k, vector<ll> nums)
-{
-    if (k == 0)
-        return 0;
-    ll j = 0;
-    ll count = 0;
-    ll n = nums.size();
-    ll total = 0;
-    unordered_map<ll, ll> freq;
-    for (ll i = 0; i < n; i++)
-    {
-        if (freq.find(nums[i]) != freq.end() || freq[nums[j]] == 0)
-            count++;
-        freq[nums[i]]++;
-        if (count <= k)
-            total += (i - j + 1); // (i-j+1) = number of subarrays ending at i-th position which contains number of different llegers less than or equal to k
-        else
-        {
-            while (count > k)
-            {
-                freq[nums[j]]--;
-                if (freq[nums[j]] == 0)
-                {
-                    count--;
-                }
-                j++;
-            }
-            total += (i - j + 1);
+#define int long long
+#define endl '\n'
+
+map<int,int> cnt;
+
+signed main(){
+    ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+    #ifdef LOCAL
+    freopen("input.txt", "r" , stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    
+    int k, n; cin>>n>>k;
+    int a[n];
+    for (int i = 0; i < n; i++) 
+        cin>>a[i];
+    int l = 0, r = 0, c = 0, ans = 0;
+    while(l < n) {
+        while(r < n && c + (cnt[a[r]] == 0) <= k) {
+            cnt[a[r]]++; 
+            c += (cnt[a[r]] == 1);
+            r++; 
         }
+        ans += r-l;
+        c -= (cnt[a[l]] == 1);
+        cnt[a[l]]--, l++;
     }
-    return total;
-}
-
-int main()
-{
-    ll n;
-    ll k;
-    cin >> n >> k;
-    vector<ll> ar(n);
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> ar[i];
-    }
-    cout << fun(k, ar);
+    cout<<ans;
 }

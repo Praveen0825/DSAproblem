@@ -14,7 +14,7 @@ int lengthOfLIS(vector<int>& nums) {
             }
         }
         return sub.size();
-    }
+    } 
 
 
     int main(){

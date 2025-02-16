@@ -58,7 +58,6 @@ int dx[]={0,0,1,-1};
 		//cout<<x<<" "<<dx[i]<<","<<y<<" "<<dy[i]<<endl;
 		if(!possible(nx,ny))continue;
 		
- 
 		if(grid[nx][ny]==0||vis[nx][ny]!=-1)continue;
 		//cout<<"("<<nx<<","<<ny<<") ";
 		vis[nx][ny]=1;
@@ -84,6 +83,5 @@ int dx[]={0,0,1,-1};
   	cout<<s.size()<<endl;
   	cout<<s<<endl;
   }
-
      return 0;
  }

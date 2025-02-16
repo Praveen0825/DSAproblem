@@ -3,11 +3,18 @@ using namespace std ;
 int main(){
   int n,ans=1 ;
   cin >> n ;
-  vector<int>a(n),b(n+1,1);
+  vector<int>a(n),b(n+1);
   for(int &x:a)
     cin >> x ;
-  b[a[0]]=0 ;
-  for(int i=1;i<n;i++)
-    ans+=b[a[i]-1],b[a[i]]=0 ;
+    for(int i=0;i<n;i++){
+      b[a[i]]=i;
+    }
+    int l=0;
+ 
+  for(int i=1;i<=n;i++)
+   { if(l>b[i])
+        ans++;
+        l=b[i];
+    }
   cout << ans  ;
 }
